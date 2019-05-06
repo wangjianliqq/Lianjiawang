@@ -1,41 +1,41 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="e-detail">
         <ul class="sellList">
-            <li class="sellContent">
+            <li class="sellContent" v-for="(item,index) of contentList" v-bind:key="index">
                 <router-link to="/homedetail" class="sellImg">
-                    <img src="../house1.png" alt="">
+                    <img v-bind:src="item.imgUrl" alt="">
                 </router-link>
                 <div class="sellDetail">
                     <div class="sellTitle">
-                        <router-link to="/homedetail">珠江路地铁 君临国际 精装修 采光好视野好</router-link>
+                        <router-link to="/homedetail">{{item.title}}</router-link>
                     </div>
                     <div class="sellAddress">
                         <span class="iconfont sellIcon">&#xe62e;</span>
-                        <a href="">君临国际 </a>
-                        <span class="sellInnerDetail1"> | 1室1厅 | 51.45平米 | 北 | 精装 | 有电梯</span>
+                        <a href="">{{item.xiaoqu}}</a>
+                        <span class="sellInnerDetail1">{{item.peizhi}}</span>
                     </div>
                     <div class="sellFlood">
                         <span class="iconfont sellIcon">&#xe65e;</span>
-                        <span class="sellInnerDetail2">高楼层(共32层)2005年建板塔结合  -  </span>
-                        <a href="">华侨路</a>
+                        <span class="sellInnerDetail2">{{item.louceng}}</span>
+                        <a href="">{{item.daolu}}</a>
                     </div>
                     <div class="sellAddition">
                         <span class="iconfont sellIcon">&#xe653;</span>
-                        <span class="sellInnerDetail2">191人关注 / 共16次带看 / 一年前发布</span>
+                        <span class="sellInnerDetail2">{{item.guanzhu}}</span>
                     </div>
                     <div class="sellTag">
-                        <span class="subway">近地铁</span>
-                        <span class="vr vr-selected">VR房源</span>
-                        <span class="five">房本满两年</span>
-                        <span class="haskey">随时看房</span>
+                        <span class="subway">{{item.subway}}</span>
+                        <span class="vr">{{item.vr}}</span>
+                        <span class="five">{{item.five}}</span>
+                        <span class="haskey">{{item.haskey}}</span>
                     </div>
                     <div class="sellPrice">
                         <div class="totalPrice">
-                            <span>160</span>
+                            <span>{{item.totalPrice}}</span>
                             万
                         </div>
                         <div class="unitPrice">
-                            <span>单价31099元/平米</span>
+                            <span>{{item.unitPrice}}</span>
                         </div>
                     </div>
                 </div>
@@ -46,45 +46,6 @@
                     <i></i>
                 </div>
             </li>
-            <li class="sellContent">
-                <a href="" class="sellImg">
-                    <img src="../house2.png" alt="">
-                </a>
-                <div class="sellDetail">
-                    <div class="sellTitle">
-                        <a href="">新城市广场摩尔特区 1室1厅 156万</a>
-                    </div>
-                    <div class="sellAddress">
-                        <span class="iconfont sellIcon">&#xe62e;</span>
-                        <a href="">新城市</a>
-                        <span class="sellInnerDetail1">  | 1室1厅 | 52.7平米 | 北 | 其他 | 有电梯</span>
-                    </div>
-                    <div class="sellFlood">
-                        <span class="iconfont sellIcon">&#xe65e;</span>
-                        <span class="sellInnerDetail2">中楼层(共12层)2005年建塔楼结合 -  </span>
-                        <a href="">龙江</a>
-                    </div>
-                    <div class="sellAddition">
-                        <span class="iconfont sellIcon">&#xe653;</span>
-                        <span class="sellInnerDetail2">2人关注 / 共0次带看 / 1个月以前发布</span>
-                    </div>
-                    <div class="sellTag">
-                        <span class="subway">近地铁</span>
-                        <span class="vr">VR房源</span>
-                        <span class="five five-selected">房本满两年</span>
-                        <span class="haskey">随时看房</span>
-                    </div>
-                    <div class="sellPrice">
-                        <div class="totalPrice">
-                            <span>156</span>
-                            万
-                        </div>
-                        <div class="unitPrice">
-                            <span>单价29602元/平米</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
         </ul>
         <div class="sellBottom">
             <div class="sellBottom-city">
@@ -92,21 +53,36 @@
                 <span> > </span>
                 <router-link to="/ershoufang" class="city1">南京二手房</router-link>
             </div>
-            <div class="page-box">
-                <a href="">1</a>
-                <a href="">2</a>
-                <span>...</span>
-                <a href="">99</a>
-                <a href="">100</a>
-                <a href="">下一页</a>
-            </div>
+            <v-pagination :total="total" :current-page='current' @pagechange="pagechange" class="sellBottom-fenye"></v-pagination>
         </div>
     </div>
 </template>
 
 <script>
+import pagination from './Pagination.vue'
+import imgUrl1 from '../house1.png'
+import imgUrl2 from '../house2.png'
 export default {
-  name: 'ErshoufangDetail'
+  name: 'ErshoufangDetail',
+  data () {
+    return {
+      total: 150,
+      display: 10,
+      current: 1,
+      contentList: [
+        {imgUrl: imgUrl1, title: '珠江路地铁 君临国际 精装修 采光好视野好', xiaoqu: '君临国际', peizhi: '| 1室1厅 | 52.7平米 | 北 | 其他 | 有电梯', louceng: '高楼层(共32层)2005年建板塔结合  -  ', daolu: '华侨路', guanzhu: '191人关注 / 共16次带看 / 一年前发布', subway: '近地铁', vr: 'VR房源', five: '房本满两年', haskey: '随时看房', totalPrice: '160', unitPrice: '单价31099元/平米'},
+        {imgUrl: imgUrl2, title: '新城市广场摩尔特区 1室1厅 156万', xiaoqu: '新城市广场', peizhi: '| 1室1厅 | 51.45平米 | 北 | 精装 | 有电梯', louceng: '中楼层(共12层)2005年建塔楼结合 -  ', daolu: '龙江', guanzhu: '2人关注 / 共0次带看 / 1个月以前发布', subway: '近地铁', vr: 'VR房源', five: '房本满两年', haskey: '随时看房', totalPrice: '156', unitPrice: '单价29602元/平米'}
+      ]
+    }
+  },
+  methods: {
+    pagechange: function (currentPage) {
+      console.log(currentPage)
+    }
+  },
+  components: {
+    'v-pagination': pagination
+  }
 }
 </script>
 
@@ -242,9 +218,6 @@ export default {
         margin-right: 6px;
         background-color: #e1f5f8;
     }
-    .vr-selected,.five-selected {
-        background-color: #373737;
-    }
     .haskey {
         display: inline-block;
         position: absolute;
@@ -310,12 +283,12 @@ export default {
     .sellBottom-city span {
         color: #aaaaaa;
     }
-    .page-box {
-        width: 300px;
+    .sellBottom-fenye {
+        width: 410px;
         height: 30px;
         position: absolute;
         line-height: 30px;
-        top: 30px;
+        top: 20px;
         right: 0;
     }
     .page-box a {
