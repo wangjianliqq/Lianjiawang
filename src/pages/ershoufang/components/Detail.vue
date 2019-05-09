@@ -81,7 +81,7 @@ export default {
       console.log(currentPage)
     },
     getPageInfo () {
-      let url = 'url'
+      let url = 'url' /// 地址为后台数据地址为后台数据地址为后台数据地址为后台数据地址为后台数据
       axios.get(url)
         .then(function (res) {
           res = res.data
