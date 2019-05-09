@@ -23,10 +23,10 @@
                     <dt></dt>
                     <dd>
                         <div class="quyueDiv">
-                            <a href="" v-for="(item,index) in quyueList" v-bind:key="index" v-show="showContent">{{item.quyueName}}</a>
+                            <a href="" v-for="(item,index) in quyueList" v-bind:key="index" v-show="showContent" target="_blank">{{item.quyueName}}</a>
                         </div>
                         <div class="ditiexianDiv">
-                            <a href="" v-for="(item,index) in ditiexianList" v-bind:key="index" v-show="!showContent">{{item.ditiexianName}}</a>
+                            <a href="" v-for="(item,index) in ditiexianList" v-bind:key="index" v-show="!showContent" target="_blank">{{item.ditiexianName}}</a>
                         </div>
                     </dd>
                 </dl>
@@ -37,7 +37,7 @@
                         <dt>售价</dt>
                     </h2>
                     <dd>
-                        <a href="" class="nofollow" v-for="(item,index) in shoujiaList" v-bind:key="index">
+                        <a href="" class="nofollow" v-for="(item,index) in shoujiaList" v-bind:key="index" target="_blank">
                             <input type="checkbox" class="hasmore-input">
                             <span class="name">{{item.shoujiaName}}</span>
                         </a>
@@ -48,7 +48,7 @@
                         <dt>面积</dt>
                     </h2>
                     <dd>
-                        <a href="" class="nofollow" v-for="(item,index) in mianjiList" v-bind:key="index">
+                        <a href="" class="nofollow" v-for="(item,index) in mianjiList" v-bind:key="index" target="_blank">
                             <input type="checkbox" class="hasmore-input">
                             <span class="name">{{item.mianjiName}}</span>
                         </a>
@@ -59,7 +59,7 @@
                         <dt>房型</dt>
                     </h2>
                     <dd>
-                        <a href="" class="nofollow" v-for="(item,index) in fangxingList" v-bind:key="index">
+                        <a href="" class="nofollow" v-for="(item,index) in fangxingList" v-bind:key="index" target="_blank">
                             <input type="checkbox" class="hasmore-input">
                             <span class="name">{{item.fangxingName}}</span>
                         </a>
@@ -70,7 +70,7 @@
                         <dt>标签</dt>
                     </h2>
                     <dd>
-                        <a href="" class="nofollow" v-for="(item,index) in biaoqianList" v-bind:key="index">
+                        <a href="" class="nofollow" v-for="(item,index) in biaoqianList" v-bind:key="index" target="_blank">
                             <input type="checkbox" class="hasmore-input">
                             <span class="name">{{item.biaoqianName}}</span>
                         </a>
@@ -81,7 +81,7 @@
                         <dt>用途</dt>
                     </h2>
                     <dd>
-                        <a href="" class="nofollow" v-for="(item,index) in yongtuList" v-bind:key="index">
+                        <a href="" class="nofollow" v-for="(item,index) in yongtuList" v-bind:key="index" target="_blank">
                             <input type="checkbox" class="hasmore-input">
                             <span class="name">{{item.yongtuName}}</span>
                         </a>
@@ -92,7 +92,7 @@
                         <dt>装修</dt>
                     </h2>
                     <dd>
-                        <a href="#" class="nofollow" v-for="(item,index) in zhuangxiuList" v-bind:key="index">
+                        <a href="#" class="nofollow" v-for="(item,index) in zhuangxiuList" v-bind:key="index" target="_blank">
                             <input class="iconfont hasmore-input" type="checkbox">
                             <span class="name">{{item.zhuangxiuName}}</span>
                         </a>
@@ -120,7 +120,6 @@ export default {
       showColor1: true,
       showColor2: false,
       showContent: true,
-      changeColor: -1,
       showDl: true,
       toggleHeight1: '230px',
       toggleHeight2: '95px',
@@ -253,7 +252,7 @@ export default {
         text-align: left;
         padding-left: 30px;
     }
-    .position-total dd .quyue{
+    .position-total dd .quyue,.position-total dd .ditiexian{
         display: inline-block;
         position: absolute;
         width: 45px;
@@ -262,7 +261,7 @@ export default {
         margin-right: 30px;
         cursor: pointer;
     }
-    .position-total dd .quyue span {
+    .position-total dd .quyue span,.position-total dd .ditiexian span {
         margin-left: 5px;
         position: absolute;
         top: 0;
@@ -271,19 +270,7 @@ export default {
         color: #00ae66;
     }
     .position-total dd .ditiexian{
-        display: inline-block;
-        position: absolute;
-        width: 45px;
-        height: 27px;
-        text-decoration: none;
         left: 90px;
-        margin-right: 30px;
-        cursor: pointer;
-    }
-    .position-total dd .ditiexian span {
-        margin-left: 5px;
-        position: absolute;
-        top: 0;
     }
     .position-detail {
         width: 1100px;
@@ -293,21 +280,14 @@ export default {
         position: relative;
         margin-top: -10px;
     }
-    .position-detail dd .quyueDiv{
+    .position-detail dd .quyueDiv,.position-detail dd .ditiexianDiv{
         width: 1050px;
         height: 27px;
         text-align: left;
         position: absolute;
-        top: 0px;
+        top: 0;
         padding-left: 30px;
-    }
-    .position-detail dd .ditiexianDiv{
-        width: 1050px;
-        height: 27px;
-        text-align: left;
-        position: absolute;
-        top: 0px;
-        padding-left: 30px;
+        cursor: pointer;
     }
     .position-detail dd a{
         display: inline-block;

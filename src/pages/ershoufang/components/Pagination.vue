@@ -2,19 +2,19 @@
     <nav>
         <ul class="pagination">
             <li :class="{'disabled':current==1}">
-                <a href="" @click="setCurrent(current-1)"> « </a>
+                <a href="" @click="setCurrent(current-1)" target="_blank"> « </a>
             </li>
             <li :class="{'disabled':current==1}">
-                <a href="" @click="setCurrent(1)"> 首页 </a>
+                <a href="" @click="setCurrent(1)" target="_blank"> 首页 </a>
             </li>
-            <li v-for="(p,index) in groupList" :class="{'active': current == p.val}" :key="index">
-                <a href="" @click="setCurrent(p.val)"> {{p.text}} </a>
-            </li>
-            <li :class="{'disabled':current==page}">
-                <a href="" @click="setCurrent(page)"> 尾页 </a>
+            <li v-for="(p,index) in groupList" :class="{'active': current == p.val}" :key="index" >
+                <a href="" @click="setCurrent(p.val)" target="_blank"> {{p.text}} </a>
             </li>
             <li :class="{'disabled':current==page}">
-                <a href="" @click="setCurrent(current + 1)"> » </a>
+                <a href="" @click="setCurrent(page)" target="_blank"> 尾页 </a>
+            </li>
+            <li :class="{'disabled':current==page}">
+                <a href="" @click="setCurrent(current + 1)" target="_blank"> » </a>
             </li>
         </ul>
     </nav>
@@ -30,9 +30,9 @@ export default{
   props: {
     total: {
       type: Number,
-      default: 0
+      default: 150
     },
-    display: {
+    pagingVolume: {
       type: Number,
       default: 10
     },
@@ -51,7 +51,7 @@ export default{
   },
   computed: {
     page: function () {
-      return Math.ceil(this.total / this.display)
+      return Math.ceil(this.total / this.pagingVolume)
     },
     groupList: function () {
       var len = this.page
@@ -90,7 +90,7 @@ export default{
     setCurrent: function (idx) {
       if (this.current !== idx && idx > 0 && idx < this.page + 1) {
         this.current = idx
-        this.$emit('pagechange', this.current)
+        this.$emit('pageChange', this.current)
       }
     }
   }

@@ -3,31 +3,31 @@
         <div class="container">
             <ul class="container-left">
                 <li>
-                    <router-link to="/" class="container-left-link">首页</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">首页</router-link>
                 </li>
                 <li>
-                    <router-link to="/ershoufang" class="selectedLink">二手房</router-link>
+                    <router-link to="/ershoufang" class="selectedLink" target="_blank">二手房</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">新房</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">新房</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">租房</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">租房</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">海外</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">海外</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">小区</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">小区</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">经纪人</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">经纪人</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">指南</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">指南</router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="container-left-link">房价</router-link>
+                    <router-link to="/" class="container-left-link" target="_blank">房价</router-link>
                 </li>
             </ul>
             <div class="container-right">
