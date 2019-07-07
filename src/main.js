@@ -7,7 +7,7 @@ import axios from 'axios'
 import './assets/styles/iconfont.css'
 
 Vue.config.productionTip = false
-Vue.prototype.$ajax = axios
+Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({

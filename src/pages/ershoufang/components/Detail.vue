@@ -81,8 +81,12 @@ export default {
       console.log(currentPage)
     },
     getPageInfo () {
-      let url = 'url' /// 地址为后台数据地址为后台数据地址为后台数据地址为后台数据地址为后台数据
-      axios.get(url)
+      /// 地址为后台数据地址为后台数据地址为后台数据地址为后台数据地址为后台数据
+      axios.get('/api', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
         .then(function (res) {
           res = res.data
           if (res.ret && res.data) {
@@ -312,7 +316,7 @@ export default {
         height: 30px;
         position: absolute;
         line-height: 30px;
-        top: 20px;
+        top: 25px;
         right: 0;
     }
     .page-box a {
